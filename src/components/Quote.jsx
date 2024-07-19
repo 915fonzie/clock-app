@@ -14,7 +14,6 @@ export default function Quote({className}) {
         return <span>Error: {error.message}</span>
     }
 
-
     function handleClick(event) {
         addButtonAnimation(event)
         queryClient.invalidateQueries({
@@ -30,9 +29,6 @@ export default function Quote({className}) {
     function removeButtonAnimation(event) {
         event.currentTarget.classList.remove("refresh-clicked")
     }
-
-    console.log(data)
-
 
     return (
         <div className={`quotes-container ${className}`}>
