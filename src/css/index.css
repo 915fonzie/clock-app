@@ -210,12 +210,16 @@ h6 {
   z-index: -1;
 }
 
+#root {
+  height: 100%;
+}
+
 .app-container {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 .quotes-container {

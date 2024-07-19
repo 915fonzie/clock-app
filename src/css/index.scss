@@ -77,9 +77,13 @@ $white: #FFFFFF;
     z-index: -1;
 }
 
+#root {
+    height: 100%;
+}
+
 .app-container {
     @include flex(flex-end, flex-start, column);
-    height: 100vh;
+    height: 100%;
 }
 
 .quotes-container {
