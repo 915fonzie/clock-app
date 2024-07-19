@@ -44,18 +44,20 @@ function App() {
 
   return (
     <main className='app-container'>
-      <Quote className={toggleBtn ? "hide-quote" : ""}/>
-      <Time windowSize={windowSize}>
-        {/* <Location /> */}
-        <h3>in Las Cruces, New Mexico</h3>
-      </Time>
-      <button
-        onClick={e => handleClick(e)}
-        className='reveal-btn'
-      >
-        {toggleBtn ? "LESS " : "MORE "}
-        <img src={arrowDownIcon} className='arrow-icon'/>
-      </button>
+      <>
+        <Quote className={toggleBtn ? "hide-quote" : ""}/>
+        <Time windowSize={windowSize}>
+          {/* <Location /> */}
+          <h3>in Las Cruces, New Mexico</h3>
+        </Time>
+        <button
+          onClick={e => handleClick(e)}
+          className='reveal-btn'
+          >
+          {toggleBtn ? "LESS " : "MORE "}
+          <img src={arrowDownIcon} className='arrow-icon'/>
+        </button>
+      </>
       <Modal data={data} className={toggleBtn ? "active-modal" : ""}/>
     </main>
   )
