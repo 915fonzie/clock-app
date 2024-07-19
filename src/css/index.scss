@@ -92,15 +92,14 @@ $white: #FFFFFF;
 .quote-wrapper {
     @include flex(inherit, flex-start, row);
     gap: 1em;
+
     p {
         max-width: 575px;
     }
 }
 
 .refresh-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@include flex(center, center, row );
     border: none;
     background: transparent;
     cursor: pointer;
@@ -112,7 +111,6 @@ $white: #FFFFFF;
 
 .time-location-container {
     margin: 2em;
-    transition: all 0.5s;
 }
 
 .greeting {
@@ -126,22 +124,21 @@ $white: #FFFFFF;
 }
 
 .abbreviation {
+    margin-bottom: 1.35em;
     font-size: 1.25rem;
     font-weight: 300;
-    margin: 0;
-    margin-bottom: 1.35em;
 }
 
 .reveal-btn {
     @include flex(space-between, center ,row );
     gap: 1em;
+    min-width: 126px;
+    padding: 0.3em;
+    padding-left: 1.5em;
     margin: 1em 1.8em 3em;
     letter-spacing: 3.75px;
     color: #979797;
     background-color: $white;
-    min-width: 126px;
-    padding: 0.3em;
-    padding-left: 1.5em;
     border-radius: 30px;
     border: none;
     cursor: pointer;
@@ -158,13 +155,11 @@ $white: #FFFFFF;
 }
 
 .reveal-modal {
-    animation: reveal 0.5s;
-    animation-fill-mode: forwards;
+    animation: reveal 0.5s forwards;
 }
 
 .hide-modal {
-    animation: hide 0.5s;
-    animation-fill-mode: forwards;
+    animation: hide 0.5s forwards;
 }
 
 .item-1{
@@ -183,13 +178,6 @@ grid-area: c;
 grid-area: d;
 }
 
-.item-5,
-.item-6,
-.item-7,
-.item-8 {
-    justify-self: flex-end;
-}
-
 .item-5{
 grid-area: e;
 }
@@ -206,31 +194,38 @@ grid-area: g;
 grid-area: h;
 }
 
+.item-5,
+.item-6,
+.item-7,
+.item-8 {
+    justify-self: flex-end;
+}
+
 .modal-wrapper {
+    overflow: hidden;
     max-height: 0;
     width: 100%;
     transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-    overflow: hidden;
 }
 
 .active-modal {
+    overflow: visible;
     max-height: 100%;
     transition: max-height 0.5s ease-in-out;
-    overflow: visible;
 }
 
 .modal {
     display: grid;
+    padding: 4em 2em;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-row-gap: 2em;
+    align-items: center;
     grid-template-areas: 
     "a e"
     "b f"
     "c g"
     "d h";
-    align-items: center;
-    padding: 4em 2em;
 }
 
 .day-modal,
@@ -261,8 +256,8 @@ grid-area: h;
     }
 
     .abbreviation {
-        font-size: 1.78rem;
         margin-bottom: 1.05em;
+        font-size: 1.78rem;
     }
 
     .reveal-btn {
@@ -277,6 +272,7 @@ grid-area: h;
     }
 
     .modal {
+        padding: 4em 0 4em 4em;
         grid-template-rows: repeat(8, 1fr);
         grid-row-gap: 0.5em;
         grid-column-gap: 3em;
@@ -289,7 +285,6 @@ grid-area: h;
         "b d"
         "f h"
         ". .";
-        padding: 4em 0 4em 4em;
     }
 }
 
@@ -303,8 +298,8 @@ grid-area: h;
     }
 
     .abbreviation {
-        font-size: 2.22rem;
         margin-bottom: 0.95em;
+        font-size: 2.22rem;
     }
 
     .quotes-container {
@@ -327,6 +322,7 @@ grid-area: h;
     }
 
     .modal {
+        padding: 1em 0 1em 8em;
         grid-template-rows: repeat(3, 1fr) 0fr repeat(3, 1fr);
         grid-row-gap: 2em;
         grid-template-areas: 
@@ -337,7 +333,6 @@ grid-area: h;
         "b d"
         "f h"
         ". .";
-        padding: 1em 0 1em 8em;
     }
 
     .line-break {
@@ -348,5 +343,5 @@ grid-area: h;
         height: 70%;
         background-color: #979797;
     }
-
+\
 }
