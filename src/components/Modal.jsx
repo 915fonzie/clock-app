@@ -1,30 +1,31 @@
 import React from 'react'
 
-export default function Modal({ data, className }) {
+export default function Modal({ data, hour, className }) {
 
-    const {timezone, day_of_year, day_of_week, week_number} = data
-    
-    // const mobileLayout = (
-    //     <div className='modal active-modal'>
-    //         <div className='modal-titles'>
-    //             <h6>current timezone</h6>
-    //             <h6>day of the year</h6>
-    //             <h6>day of the week</h6>
-    //             <h6>week number</h6>
-    //         </div>
-    //         <div className='modal-data'>
-    //             <h2>{timezone}</h2>
-    //             <h2>{day_of_year}</h2>
-    //             <h2>{day_of_week}</h2>
-    //             <h2>{week_number}</h2>
-    //         </div>
-    //     </div>
-    // )
+    const { timezone, day_of_year, day_of_week, week_number } = data
+    const modalRef = React.useRef(null)
 
+    React.useEffect(() => {
+
+     }, [])
+
+    if (hour >= 5 || hour < 18) {
+        if (modalRef.current) {
+            modalRef.current.classList.add('day-modal')
+            modalRef.current.classList.remove('night-modal')
+        }
+    }
+
+    if (hour >= 18 || hour < 5) {
+        if (modalRef.current) {
+            modalRef.current.classList.add('night-modal')
+            modalRef.current.classList.remove('day-modal')
+        }
+    }
 
     return (
         <div className={`modal-wrapper ${className}`}>
-            <div className="modal">
+            <div className="modal" ref={modalRef}>
                 <h6 className='item-1'>current timezone</h6>
                 <h6 className='item-2'>day of the year</h6>
                 <h6 className='item-3'>day of the week</h6>
@@ -33,6 +34,7 @@ export default function Modal({ data, className }) {
                 <h2 className='item-6'>{day_of_year}</h2>
                 <h2 className='item-7'>{day_of_week}</h2>
                 <h2 className='item-8'>{week_number}</h2>
+                <div className='line-break'></div>
             </div>
         </div>
     )

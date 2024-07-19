@@ -1,31 +1,9 @@
 import React from 'react'
-import getLocalTime from '../api/getLocalTime'
 import sunIcon from '../assets/icons/icon-sun.svg'
 import moonIcon from '../assets/icons/icon-moon.svg'
 
-export default function Time({children, windowSize}) {
-    const [date, setDate] = React.useState(new Date())
-
-    React.useEffect(() => {
-      const interval = setInterval(() => {
-        setDate(new Date())
-      }, 1000)
-  
-        return () => {
-            clearInterval(interval)
-        }
-    }, [])
-
-    const { isPending, isError, data, error } = getLocalTime()
-
-    if (isPending) {
-        return <span>Loading...</span>
-    }
-
-    if (isError) {
-        return <span>Error: {error.message}</span>
-    }
-
+export default function Time({ children, windowSize, data, date }) {
+    
     let hour = date.getHours()
     let minutes = date.getMinutes()
     let icon = ""

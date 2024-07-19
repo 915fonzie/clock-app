@@ -10,17 +10,23 @@ function App() {
 
   const [toggleBtn, setToggleBtn] = React.useState(false)
   const [windowSize, setWindowSize] = React.useState(null)
+  const [date, setDate] = React.useState(new Date())
 
   React.useEffect(() => {  
+    const interval = setInterval(() => {
+      setDate(new Date())
+    }, 1000)
+
     const handleResize = () => {
       setWindowSize(window.innerWidth)
-  }
-  window.addEventListener('resize', handleResize)
+    }
+    window.addEventListener('resize', handleResize)
 
-      return () => {
+    return () => {
+          clearInterval(interval)
           window.removeEventListener('resize', handleResize)
       }
-  }, [])
+  },[])
 
   const { isPending, isError, data, error } = getLocalTime()
 
@@ -45,25 +51,23 @@ function App() {
   return (
     <main className='app-container'>
       <>
-        <Quote className={toggleBtn ? "hide-quote" : ""}/>
-        <Time windowSize={windowSize}>
-          {/* <Location /> */}
-          <h3>in Las Cruces, New Mexico</h3>
-        </Time>
-        <button
-          onClick={e => handleClick(e)}
-          className='reveal-btn'
-          >
-          {toggleBtn ? "LESS " : "MORE "}
-          <img src={arrowDownIcon} className='arrow-icon'/>
-        </button>
+        <Quote className={toggleBtn ? "hide-quote" : ""} />
+        <div className='time-and-btn-container'>
+          <Time windowSize={windowSize} data={data} date={date}>
+            <Location />
+          </Time>
+          <button
+            onClick={e => handleClick(e)}
+            className='reveal-btn'
+            >
+            {toggleBtn ? "LESS " : "MORE "}
+            <img src={arrowDownIcon} className='arrow-icon'/>
+          </button>
+        </div>
       </>
-      <Modal data={data} className={toggleBtn ? "active-modal" : ""}/>
+      <Modal data={data} hour={date.getHours()} className={toggleBtn ? "active-modal" : ""}/>
     </main>
   )
-  
-
-
 }
 
 export default App
