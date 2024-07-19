@@ -1,3 +1,271 @@
+$black: #000000;
+$dark-grey: #303030;
+$white: #FFFFFF;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
 
 @import './global';
+
+@keyframes rotate360 {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes reveal {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(0.5turn);
+    }
+}
+@keyframes hide {
+    from {
+        transform: rotate(0.5turn);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes revealModal {
+    from {
+        max-height: 0;
+        transform: translateY(100%);
+    }
+    to {
+        max-height: fit-content;
+        transform: translateY(0);
+    }
+}
+
+.day-bg::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/mobile/bg-image-daytime.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(65%);
+    z-index: -1;
+}
+.night-bg::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/mobile/bg-image-nighttime.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(75%);
+    z-index: -1;
+}
+
+.app-container {
+    @include flex(flex-end, flex-start, column);
+    height: 100vh;
+}
+
+.quotes-container {
+    height: fit-content;
+    margin: 2em;
+    margin-bottom: auto;
+    transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.hide-quote {
+    transform: translateY(-200%);
+    transition: all 0.5s ease-in-out;
+}
+
+.quote-wrapper {
+    @include flex(inherit, flex-start, row);
+    gap: 1em;
+    p {
+        max-width: 575px;
+    }
+}
+
+.refresh-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.refresh-clicked {
+    animation: rotate360 0.5s;
+}
+
+.time-location-container {
+    margin: 2em;
+    transition: all 0.5s;
+}
+
+.greeting {
+    @include flex(flex-start, center, row);
+    gap: 1em;
+}
+
+.time {
+    @include flex(inherit, flex-end, row);
+    gap: 1em;
+}
+
+.abbreviation {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 1.35em;
+}
+
+.reveal-btn {
+    @include flex(space-between, center ,row );
+    gap: 1em;
+    margin: 1em 2em 3em;
+    letter-spacing: 3.75px;
+    color: #979797;
+    background-color: $white;
+    min-width: 126px;
+    padding: 0.3em;
+    padding-left: 1.5em;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    img {
+        background-color: $dark-grey;
+        padding: 1em 0.8em;
+        border-radius: 25px;
+    }
+    &:hover {
+        img{
+            background-color: #999999;
+        }
+    }
+}
+
+.reveal-modal {
+    animation: reveal 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.hide-modal {
+    animation: hide 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.item-1{
+grid-area: a;
+}
+
+.item-2{
+grid-area: b;
+}
+
+.item-3{
+grid-area: c;
+}
+
+.item-4{
+grid-area: d;
+}
+
+.item-5,
+.item-6,
+.item-7,
+.item-8 {
+    justify-self: flex-end;
+}
+
+.item-5{
+grid-area: e;
+}
+
+.item-6{
+grid-area: f;
+}
+
+.item-7{
+grid-area: g;
+}
+
+.item-8{
+grid-area: h;
+}
+
+.modal-wrapper {
+    max-height: 0;
+    width: 100%;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.active-modal {
+    max-height: 100%;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 2em;
+    grid-template-areas: 
+    "a e"
+    "b f"
+    "c g"
+    "d h";
+    align-items: center;
+    padding: 4em 2em;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(40.77px);
+}
+
+
+@media screen and (min-width:768px) {
+
+    .day-bg::before {
+        background-image: url("../assets/tablet/bg-image-daytime.jpg");
+    }
+
+    .night-bg::before {
+        background-image: url("../assets/tablet/bg-image-nighttime.jpg");
+    }
+
+    .abbreviation {
+        font-size: 1.78rem;
+        margin-bottom: 1.05em;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .day-bg::before {
+        background-image: url("../assets/desktop/bg-image-daytime.jpg");
+
+    }
+    .night-bg::before {
+        background-image: url("../assets/desktop/bg-image-nighttime.jpg");
+    }
+
+    .abbreviation {
+        font-size: 2.22rem;
+        margin-bottom: 0.95em;
+    }
+}

@@ -1,10 +1,409 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html {
+  position: relative;
+  overflow: hidden;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
+  font-family: "Inter", "sans-sarif";
+  font-size: 12px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h5 {
+  font-weight: bold;
+}
+
+h4,
+h6 {
+  font-weight: normal;
+}
+
+h3,
+h4,
+h6 {
+  text-transform: uppercase;
+}
+
+h3,
+h5,
+h6 {
+  line-height: 28px;
+}
+
+h3,
+h4 {
+  font-size: 1.25rem;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin: 0.15em 0;
+  font-size: 8.33rem;
+  letter-spacing: -2.5px;
+  line-height: 100px;
+}
+
+h2 {
+  font-size: 1.67rem;
+}
+
+h4 {
+  line-height: 25px;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.833rem;
+  letter-spacing: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  html,
+  body {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 9.72rem;
+    letter-spacing: -4.38px;
+    line-height: 200px;
+  }
+  h2 {
+    font-size: 2.22rem;
+  }
+  h3,
+  h4,
+  h5 {
+    font-size: 1rem;
+  }
+  h3,
+  h4 {
+    letter-spacing: 3.6px;
+  }
+  h6 {
+    font-size: 0.72rem;
+    letter-spacing: 2.6px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  h1 {
+    font-size: 11.11rem;
+    letter-spacing: -5px;
+  }
+  h2 {
+    font-size: 3.11rem;
+  }
+  h3 {
+    font-size: 1.33rem;
+    letter-spacing: 4.8px;
+  }
+  h4 {
+    font-size: 1.11rem;
+    letter-spacing: 4px;
+  }
+  h5 {
+    font-size: 1.11rem;
+  }
+  h6 {
+    font-size: 0.833rem;
+    letter-spacing: 3px;
+  }
+}
+@keyframes rotate360 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes reveal {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+@keyframes hide {
+  from {
+    transform: rotate(0.5turn);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes revealModal {
+  from {
+    max-height: 0;
+    transform: translateY(100%);
+  }
+  to {
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+    transform: translateY(0);
+  }
+}
+.day-bg::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/mobile/bg-image-daytime.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(65%);
+  z-index: -1;
+}
+
+.night-bg::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/mobile/bg-image-nighttime.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(75%);
+  z-index: -1;
+}
+
+.app-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.quotes-container {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 2em;
+  margin-bottom: auto;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.hide-quote {
+  transform: translateY(-200%);
+  transition: all 0.5s ease-in-out;
+}
+
+.quote-wrapper {
+  display: flex;
+  justify-content: inherit;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 1em;
+}
+.quote-wrapper p {
+  max-width: 575px;
+}
+
+.refresh-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.refresh-clicked {
+  animation: rotate360 0.5s;
+}
+
+.time-location-container {
+  margin: 2em;
+  transition: all 0.5s;
+}
+
+.greeting {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.time {
+  display: flex;
+  justify-content: inherit;
+  align-items: flex-end;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.abbreviation {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 1.35em;
+}
+
+.reveal-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+  margin: 1em 2em 3em;
+  letter-spacing: 3.75px;
+  color: #979797;
+  background-color: #FFFFFF;
+  min-width: 126px;
+  padding: 0.3em;
+  padding-left: 1.5em;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+.reveal-btn img {
+  background-color: #303030;
+  padding: 1em 0.8em;
+  border-radius: 25px;
+}
+.reveal-btn:hover img {
+  background-color: #999999;
+}
+
+.reveal-modal {
+  animation: reveal 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.hide-modal {
+  animation: hide 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.item-1 {
+  grid-area: a;
+}
+
+.item-2 {
+  grid-area: b;
+}
+
+.item-3 {
+  grid-area: c;
+}
+
+.item-4 {
+  grid-area: d;
+}
+
+.item-5,
+.item-6,
+.item-7,
+.item-8 {
+  justify-self: flex-end;
+}
+
+.item-5 {
+  grid-area: e;
+}
+
+.item-6 {
+  grid-area: f;
+}
+
+.item-7 {
+  grid-area: g;
+}
+
+.item-8 {
+  grid-area: h;
+}
+
+.modal-wrapper {
+  max-height: 0;
+  width: 100%;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.active-modal {
+  max-height: 100%;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 2em;
+  grid-template-areas: "a e" "b f" "c g" "d h";
+  align-items: center;
+  padding: 4em 2em;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(40.77px);
+          backdrop-filter: blur(40.77px);
+}
+
+@media screen and (min-width: 768px) {
+  .day-bg::before {
+    background-image: url("../assets/tablet/bg-image-daytime.jpg");
+  }
+  .night-bg::before {
+    background-image: url("../assets/tablet/bg-image-nighttime.jpg");
+  }
+  .abbreviation {
+    font-size: 1.78rem;
+    margin-bottom: 1.05em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .day-bg::before {
+    background-image: url("../assets/desktop/bg-image-daytime.jpg");
+  }
+  .night-bg::before {
+    background-image: url("../assets/desktop/bg-image-nighttime.jpg");
+  }
+  .abbreviation {
+    font-size: 2.22rem;
+    margin-bottom: 0.95em;
+  }
 }/*# sourceMappingURL=index.css.map */
