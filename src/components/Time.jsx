@@ -26,7 +26,7 @@ export default function Time({ children, windowSize, data, date }) {
     return (
         <div className='time-location-container'>
             <div className='greeting'>
-                <img src={icon} />
+                <img src={icon} alt='icon of sun during the day or moon during the night'/>
                 <h4>{greeting}{windowSize >= 768 && ", it's currently"}</h4>
             </div>
             <div className='time'>

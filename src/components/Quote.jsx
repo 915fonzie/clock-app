@@ -38,7 +38,14 @@ export default function Quote({className}) {
         <div className={`quotes-container ${className}`}>
             <div className='quote-wrapper'>
                 <p>{`${data[0].quote}`}</p>
-                <button className='refresh-btn' onClick={e => handleClick(e)} onAnimationEnd={e => removeButtonAnimation(e)}><img src={refreshIcon} /></button>
+                <button
+                    className='refresh-btn'
+                    onClick={e => handleClick(e)}
+                    onAnimationEnd={e => removeButtonAnimation(e)}
+                    aria-label='refresh button'
+                >
+                    <img src={refreshIcon} alt='refresh icon'/>
+                </button>
             </div>
             <h5>{data[0].author}</h5>
         </div>

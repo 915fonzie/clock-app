@@ -59,9 +59,10 @@ function App() {
           <button
             onClick={e => handleClick(e)}
             className='reveal-btn'
+            aria-label='button to reveal more info about your timezone, day of the year, day of the week, and week number'
             >
             {toggleBtn ? "LESS " : "MORE "}
-            <img src={arrowDownIcon} className='arrow-icon'/>
+            <img src={arrowDownIcon} className='arrow-icon' alt='arrow icon'/>
           </button>
         </div>
       </>
