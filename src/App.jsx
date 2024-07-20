@@ -22,6 +22,10 @@ function App() {
     }
     window.addEventListener('resize', handleResize)
 
+    if (windowSize === null) {
+      setWindowSize(window.innerWidth)
+    }
+
     return () => {
           clearInterval(interval)
           window.removeEventListener('resize', handleResize)
