@@ -220,6 +220,9 @@ h6 {
   margin-bottom: auto;
   transition: all 0.5s cubic-bezier(0, 1, 0, 1);
 }
+.quotes-container h5 {
+  margin-top: 1em;
+}
 
 .hide-quote {
   transform: translateY(-200%);
@@ -400,8 +403,18 @@ h6 {
     margin-bottom: 1.05em;
     font-size: 1.78rem;
   }
+  .time-and-btn-container {
+    display: flex;
+    justify-content: inherit;
+    align-items: inherit;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
   .reveal-btn {
     margin-left: 2.75em;
+    padding: 0.6em;
+    padding-left: 1.5em;
   }
   .item-5,
   .item-6,
@@ -425,7 +438,7 @@ h6 {
     background-image: url("../assets/desktop/bg-image-nighttime.jpg");
   }
   .abbreviation {
-    margin-bottom: 0.95em;
+    margin-bottom: 0.7em;
     font-size: 2.22rem;
   }
   .quotes-container {

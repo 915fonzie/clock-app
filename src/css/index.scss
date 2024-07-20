@@ -82,6 +82,10 @@ $white: #FFFFFF;
     margin: 2em;
     margin-bottom: auto;
     transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+
+    h5 {
+        margin-top: 1em;
+    }
 }
 
 .hide-quote {
@@ -260,8 +264,16 @@ grid-area: h;
         font-size: 1.78rem;
     }
 
+    .time-and-btn-container {
+        @include flex(inherit, inherit, column);
+        gap: 1em;
+        margin-bottom: 1em;
+    }
+
     .reveal-btn {
         margin-left: 2.75em;
+        padding: 0.6em;
+        padding-left: 1.5em;
     }
 
     .item-5,
@@ -298,7 +310,7 @@ grid-area: h;
     }
 
     .abbreviation {
-        margin-bottom: 0.95em;
+        margin-bottom: 0.7em;
         font-size: 2.22rem;
     }
 
